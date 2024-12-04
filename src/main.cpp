@@ -8,7 +8,7 @@ using namespace std;
 
 const unsigned int WIDTH = 1200;
 const unsigned int HEIGHT = 1200;
-const unsigned int ITERATIONS = 40;
+const unsigned int ITERATIONS = 80;
 const unsigned int THRESHHOLD = 500;
 const double X_COORD = -0.5;
 const double Y_COORD = 0;
@@ -32,6 +32,11 @@ int main()
         return 1;
     }
 
+    sf::Texture texture;
+    texture.create(WIDTH, HEIGHT);
+
+    sf::Sprite sprite(texture); // needed to draw the texture on screen
+
     //vars
     float x_coord = 0.f;
     float y_coord = 0.f;
@@ -48,6 +53,14 @@ int main()
             // "close requested" event: we close the window
             if (event.type == sf::Event::Closed)
                 window.close();
+            if (event.type == sf::Event::KeyReleased) {
+                if (event.key.scancode == sf::Keyboard::Scan::RBracket) {
+                    iterations += 5;
+                }
+                if (event.key.scancode == sf::Keyboard::Scan::LBracket) {
+                    iterations -= 5;
+                }
+            }
         }
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
             x_coord -= 0.005 / zoom;
@@ -67,12 +80,6 @@ int main()
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Dash)) {
             zoom /= 1.008;
         }
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::RBracket)) {
-            iterations += 1;
-        }
-        if (sf::Keyboard::isKeyPressed(sf::Keyboard::LBracket)) {
-            iterations -= 1;
-        }
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Apostrophe)) {
             threshhold += 1;
         }
@@ -80,19 +87,15 @@ int main()
             threshhold -= 1;
         }
 
+        
+
+
         // clear the window with black color
         window.clear(sf::Color::Black);
 
         // draw everything here...
-        const unsigned int W = WIDTH;
-        const unsigned int H = HEIGHT;
 
-        sf::Uint8* pixels = new sf::Uint8[W * H * 4];
-
-        sf::Texture texture;
-        texture.create(W, H);
-
-		sf::Sprite sprite(texture); // needed to draw the texture on screen
+       
 
 		
         shader.setUniform("threshhold", threshhold);
