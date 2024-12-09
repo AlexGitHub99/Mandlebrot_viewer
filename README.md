@@ -2,7 +2,7 @@
 
 This program renders a simple mandlebrot fractal explorer. You can move around and zoom up to around 10,000 times magnification. To run the program, compile with CMake and run the exe file.
 
-![Mandlebrot]([http://url/to/img.png](https://i.ibb.co/PGqqHRL/Screenshot-2024-12-08-232123.png))
+![Mandlebrot](https://i.ibb.co/PGqqHRL/Screenshot-2024-12-08-232123.png)
 ## License
 
 Controls:
