@@ -5,10 +5,15 @@ This program renders a simple mandlebrot fractal explorer. You can move around a
 ![Mandlebrot](https://i.ibb.co/PGqqHRL/Screenshot-2024-12-08-232123.png)
 
 Controls:
+
 Arrow keys -> move
+
 +/-        -> zoom
+
 ]/[        -> adjust iteration number
+
 ;/'        -> adjust threshhold number
+
 
 More information: https://en.wikipedia.org/wiki/Mandelbrot_set
 
